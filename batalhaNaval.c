@@ -15,6 +15,8 @@ int main() {
     // Coordenadas predefinidas para os navios
     int linha1 = 2, coluna1 = 3; // Navio horizontal
     int linha2 = 5, coluna2 = 7; // Navio vertical
+    int linha3 = 1, coluna3 = 1; // Navio diagonal principal
+    int linha4 = 6, coluna4 = 8; // Navio diagonal secundária
     
     // Posicionar navio horizontalmente
     if (coluna1 + navio <= tamanho) {
@@ -27,6 +29,20 @@ int main() {
     if (linha2 + navio <= tamanho) {
         for (int i = 0; i < navio; i++) {
             tabuleiro[linha2 + i][coluna2] = 3;
+        }
+    }
+    
+    // Posicionar navio diagonalmente principal (↘)
+    if (linha3 + navio <= tamanho && coluna3 + navio <= tamanho) {
+        for (int i = 0; i < navio; i++) {
+            tabuleiro[linha3 + i][coluna3 + i] = 3;
+        }
+    }
+    
+    // Posicionar navio diagonalmente secundária (↙)
+    if (linha4 + navio <= tamanho && coluna4 - navio >= 0) {
+        for (int i = 0; i < navio; i++) {
+            tabuleiro[linha4 + i][coluna4 - i] = 3;
         }
     }
     
@@ -45,3 +61,5 @@ int main() {
     
     return 0;
 }
+
+
