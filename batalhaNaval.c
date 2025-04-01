@@ -46,10 +46,44 @@ int main() {
         }
     }
     
+    // Habilidades especiais
+    int origem_cone_linha = 2, origem_cone_coluna = 5;
+    int origem_cruz_linha = 5, origem_cruz_coluna = 5;
+    int origem_octaedro_linha = 7, origem_octaedro_coluna = 5;
+    
+    // Aplicar habilidade em formato de cone
+    for (int i = 0; i < 3; i++) {
+        for (int j = -i; j <= i; j++) {
+            int lin = origem_cone_linha + i;
+            int col = origem_cone_coluna + j;
+            if (lin < tamanho && col >= 0 && col < tamanho) {
+                tabuleiro[lin][col] = 5;
+            }
+        }
+    }
+    
+    // Aplicar habilidade em formato de cruz
+    for (int i = -2; i <= 2; i++) {
+        if (origem_cruz_linha + i >= 0 && origem_cruz_linha + i < tamanho)
+            tabuleiro[origem_cruz_linha + i][origem_cruz_coluna] = 5;
+        if (origem_cruz_coluna + i >= 0 && origem_cruz_coluna + i < tamanho)
+            tabuleiro[origem_cruz_linha][origem_cruz_coluna + i] = 5;
+    }
+    
+    // Aplicar habilidade em formato de octaedro
+    for (int i = -2; i <= 2; i++) {
+        for (int j = - (2 - (i < 0 ? -i : i)); j <= (2 - (i < 0 ? -i : i)); j++) {
+            int lin = origem_octaedro_linha + i;
+            int col = origem_octaedro_coluna + j;
+            if (lin >= 0 && lin < tamanho && col >= 0 && col < tamanho) {
+                tabuleiro[lin][col] = 5;
+            }
+        }
+    }
+    
     // Exibir o tabuleiro
     printf("   ");
-    char linha[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
-    for (int i = 0; i < tamanho; i++) printf("%c ", linha[i]);
+    for (int i = 0; i < tamanho; i++) printf("%d ", i);
     printf("\n");
     for (int i = 0; i < tamanho; i++) {
         printf("%d  ", i);
@@ -61,5 +95,3 @@ int main() {
     
     return 0;
 }
-
-
