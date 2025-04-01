@@ -83,7 +83,8 @@ int main() {
     
     // Exibir o tabuleiro
     printf("   ");
-    for (int i = 0; i < tamanho; i++) printf("%d ", i);
+    char alfa[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+    for (int i = 0; i < tamanho; i++) printf("%c ", alfa[i]);
     printf("\n");
     for (int i = 0; i < tamanho; i++) {
         printf("%d  ", i);
